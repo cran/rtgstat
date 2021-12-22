@@ -30,7 +30,8 @@
                 tg.base_url   = 'https://api.tgstat.ru/',
                 tg.channel_id = tg_channel_id,
                 tg.max_tries  = 1,
-                tg.interval   = 10,
+                tg.interval   = NULL,
+                tg.check_api_quote = TRUE,
                 tg.api_quote_alert_rate = 0.9)
 
   toset <- !(names(op.tg) %in% names(op))
@@ -63,7 +64,7 @@ rtgstatWelcomeMessage <- function(){
          "\n",
          "Type ?rtgstat for the main documentation.\n",
          "The github page is: https://github.com/selesnow/rtgstat/\n",
-         "Package site: https://selesnow.github.io/rtgstat/docs\n",
+         "Package site: https://selesnow.github.io/rtgstat/\n",
          "\n",
          "Suggestions and bug-reports can be submitted at: https://github.com/selesnow/rtgstat/issues\n",
          "Or contact: <selesnow@gmail.com>\n",

@@ -2,34 +2,43 @@
 is_response <- getFromNamespace("is_response", "httr2")
 globalVariables(".data")
 globalVariables(".env")
+. <- NULL
 
 # request -----------------------------------------------------------------
-tg_make_request <- function(method, ..., check_quote = TRUE) {
+tg_make_request <- function(method, ..., check_quote = getOption('tg.check_api_quote')) {
 
   if ( check_quote ) {
     api_quote <- tg_api_usage()
     print(api_quote, tbl = FALSE)
   }
 
-  retry(
-    {
-      resp <- request(str_glue('{getOption("tg.base_url")}{method}')) %>%
-        req_url_query(...) %>%
-        req_perform()
-    },
-    until     = ~ is_response(.) && resp_status(.) == 200,
-    interval  = getOption('tg.interval'),
-    max_tries = getOption('tg.max_tries')
-  )
+  resp <- request(str_glue('{getOption("tg.base_url")}')) %>%
+    req_url_path_append(method) %>%
+    req_url_query(...) %>%
+    req_user_agent("rtgstat") %>%
+    req_retry(
+      max_tries    = getOption('tg.max_tries'),
+      is_transient = ~ !is_response(.x) && resp_status(.x) != 200,
+      after        = getOption('tg.interval')
+    ) %>%
+    req_perform() %>%
+    resp_body_json()
 
-  resp <- resp_body_json(resp)
-
-  if ( 'error' %in% names(resp) ) {
+  if ( resp$status == 'error' ) {
     cli_abort(resp$error)
   }
 
   return(resp)
 
+}
+
+tg_error_body <- function(resp) {
+  resp %>% resp_body_json() %>% .$error
+}
+
+tg_is_error <- function(resp) {
+  resp_stat <- resp %>% resp_body_json() %>% .$status
+  resp_stat == "error"
 }
 
 tg_set_response_class <- function(x, class) {
