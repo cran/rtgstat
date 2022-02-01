@@ -1,10 +1,21 @@
-# rtgstat 0.2.2
+# rtgstat 0.3.0
+
+## New functions
+* `tg_channels_search()`- Search telegram channel.
+
+## Bug fixes
+* Fix `tg_get_token()`, previously the function only looked for the token in the options, ignoring the environment variable [issue#1](https://github.com/selesnow/rtgstat/issues/1)
+
+## Other
+* `tg_get_token()` return error when API token doesn't set.
+
+# rtgstat 0.2.1
 
 * Only CRAN fixes.
 
 # rtgstat 0.2.0
 
-## New function
+## New functions
 * `tg_channel_avg_posts_reach()` - Getting the average coverage of channel publications over time.
 * `tg_channel_err()` - Obtaining an ERR indicator for a channel in dynamics.
 * `tg_set_check_api_quote()` - Enable and disable API limit rate alerts.
