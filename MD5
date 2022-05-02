@@ -1,7 +1,7 @@
-cbefadf11aa230e0b691873b964a6c8e *DESCRIPTION
+1d9482fdc3f0355bc5d103adb92b9c70 *DESCRIPTION
 78af96d589b27a905fd3a872cc32d6e7 *LICENSE
 8c5e12d66e37c0833f882dbe6a1d574a *NAMESPACE
-a2e16ef3372f465dcae87d3320650e0a *NEWS.md
+e5553fe0ce43ef81bf654693a7b44c2e *NEWS.md
 a51f79498236a750a5cd3dccffe5f850 *R/rtgstat_package.R
 c08a05ffea39a20aee13135667193e26 *R/setters.R
 8c3355b71bac4856f1c38ba5001d2dc3 *R/tg_api_usage.R
@@ -24,9 +24,9 @@ f1f6a7730f505e7f667f025b0ebf2f26 *R/tg_mentions_by_period.R
 34b983325919ed98e90154cb49786f22 *R/tg_post.R
 229c9538cd7d41a789c9a41f6391401a *R/tg_post_stat.R
 304897568e41145e7ed2377e534b39a6 *R/tg_posts_search.R
-17014fef73a3c41e1c8af9b8c7e74ad4 *R/utils.R
+ca071d4c2e415c15f1447b789e600125 *R/utils.R
 8899daba96b8364cbd380932a45f78d8 *R/zzz.R
-281a55611442fc15c955a152a2400430 *README.md
+48c276e123a7fc88c4ca0ef0a3a31bd4 *README.md
 da01a4fa518d1a94521b4437cbeaf4c5 *man/figures/logo.png
 aaa1db8a075b5009eb06042fa0f9206c *man/rtgstat-package.Rd
 2a67c8716d4204f0e94c15bbdb9d4db3 *man/tg_api_usage.Rd
